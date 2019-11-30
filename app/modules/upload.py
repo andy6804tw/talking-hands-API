@@ -1,4 +1,5 @@
 from flask_uploads import UploadSet, IMAGES,patch_request_class, AllExcept
+from flask import jsonify
 
 upFile = UploadSet('upFile',extensions=AllExcept(()))
 
@@ -8,13 +9,11 @@ def uploadFile(request):
       videoName=request.form['fileName']
       request.files['videoFile'].filename=videoName
       filename = upFile.save(request.files['videoFile'])
-      # file_url = upFile.url(filename)
-      return str(filename)+' don'
+      return jsonify({"code":200,"message": str(filename)+"上傳成功"})
     elif request.method == 'POST' and 'imageFile'  in request.files:
       imageName=request.form['fileName']
       request.files['imageFile'].filename=imageName
       filename = upFile.save(request.files['imageFile'])
-      # file_url = upFile.url(filename)
-      return str(filename)+' don'
+      return jsonify({"code":200,"message": str(filename)+"上傳成功"})
     else:
-      return 'error'
+      return jsonify({"code":404,"message": "NOT FOUND"}),404
