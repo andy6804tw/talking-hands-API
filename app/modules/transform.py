@@ -1,4 +1,5 @@
 import cv2
+import time
 import pickle as pkl
 import imageio
 import numpy as np
@@ -15,12 +16,14 @@ from flask import jsonify
 # %load_ext autoreload
 # %autoreload 2
 
-def getTransform():
+def getTransform(videoName):
     G = network.Generator()
     G = load_model(G, "app/modules/talkingHeads/resource/han", "han")
     G = G.to("cuda:0")
-    generate_moving_video(G, "app/static/source.mp4", "app/modules/talkingHeads/resource/han/han.npy", "app/static/result.mp4", "cuda:0")
-    return jsonify({"code":200,"message": "轉換成功"})
+    timestamp=str(int(time.time()))
+    print(timestamp)
+    generate_moving_video(G, "app/static/"+videoName, "app/modules/talkingHeads/resource/han/han.npy", "app/static/result-"+timestamp+".mp4", "cuda:0")
+    return jsonify({"code":200,"message": "轉換成功",'token':timestamp})
 
 def getResult():
     return 'ddon'
