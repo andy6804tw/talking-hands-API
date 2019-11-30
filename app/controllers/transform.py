@@ -6,5 +6,5 @@ transformCtrl = Blueprint('transform',__name__)
 
 @transformCtrl.route('', methods=['GET'])
 def getResult():
-    return transformModule.getResult()
+    return transformModule.getTransform()
   
