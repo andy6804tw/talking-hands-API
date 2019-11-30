@@ -15,7 +15,6 @@ def uploadFile():
 # clear all file in folder
 def emptyFolder():
   folder = 'app/static'
-  print(len(os.listdir(folder)))
   if len(os.listdir(folder))>=1:
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)

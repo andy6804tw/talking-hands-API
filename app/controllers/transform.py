@@ -8,6 +8,7 @@ transformCtrl = Blueprint('transform',__name__)
 def getResult():
     insertValues = request.get_json()
     print(insertValues) #request.get_json()['videoName']
-    videoName=request.get_json()['videoName']
-    return transformModule.getTransform(videoName)
+    videoName=insertValues['videoName']
+    modelIdx=int(insertValues['modelIdx'])
+    return transformModule.getTransform(videoName, modelIdx)
   
