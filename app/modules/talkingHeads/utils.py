@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms.functional as TF
 from face_alignment import FaceAlignment, LandmarksType
+import base64 
 
 
 def plot_landmarks(frame, landmarks):
@@ -249,6 +250,22 @@ def generate_moving_image(model, image, e_vector, device, fa):
     """
     landmark, _ = image_to_lm(image, fa)
     g_image = lm_to_image(model, [landmark], e_vector, device)[0]
+    g_image=process_image(g_image)
     return g_image
 
+def cv2_base64(image):
+    """
+    cv2 to base64
+    """
+    base64_str = cv2.imencode('.jpg',image)[1].tostring()
+    base64_str = base64.b64encode(base64_str)
+    return base64_str
 
+def base64_cv2(base64_str):
+    """
+    base64 to cv2
+    """
+    imgString = base64.b64decode(base64_str)
+    nparr = np.fromstring(imgString,np.uint8)  
+    image = cv2.imdecode(nparr,cv2.IMREAD_COLOR)
+    return image

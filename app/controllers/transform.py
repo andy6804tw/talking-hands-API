@@ -12,3 +12,10 @@ def getResult():
     modelIdx=int(insertValues['modelIdx'])
     return transformModule.getTransform(videoName, modelIdx)
   
+
+@transformCtrl.route('/image', methods=['POST'])
+def getImgTransform():
+    insertValues = request.get_json()
+    srcImage=insertValues['srcImage']
+    modelIdx=int(insertValues['modelIdx'])
+    return transformModule.imgTransform(srcImage, modelIdx)
