@@ -4,7 +4,7 @@ import app.modules.transform as transformModule
 transformCtrl = Blueprint('transform',__name__)
   
 
-@transformCtrl.route('', methods=['POST'])
+@transformCtrl.route('/video', methods=['POST'])
 def getResult():
     insertValues = request.get_json()
     print(insertValues) #request.get_json()['videoName']
