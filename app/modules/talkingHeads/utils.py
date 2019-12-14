@@ -155,7 +155,9 @@ def video_to_lm(video_path, device, fa):
     """
     videocap = cv2.VideoCapture(video_path)
     frame_rate = int(videocap.get(cv2.CAP_PROP_FPS))
-    
+    print(frame_rate)
+    frame_rate =29 if frame_rate >= 2000 else frame_rate
+    print(frame_rate)
     #fa = FaceAlignment(LandmarksType._2D, device=device)
     lm_list = []
     lm_image_list = []
