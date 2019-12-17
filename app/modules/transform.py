@@ -17,7 +17,7 @@ from flask import jsonify
 # %autoreload 2
 
 def getTransform(videoName,modelIdx):
-    modelList=['sw','han','tsai','father','cloud']
+    modelList=['sw','han','tsai','father','cloud','aerith']
     G = network.Generator()
     G = load_model(G, "app/modules/talkingHeads/resource/"+modelList[modelIdx], modelList[modelIdx])
     G = G.to("cuda:0")
