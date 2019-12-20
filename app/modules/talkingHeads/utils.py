@@ -218,6 +218,7 @@ def image_to_video(images, lm_images, video_path, frame_rate):
         image = process_image(image)
         
         frame = np.concatenate((image, lm_image), axis=1)
+#         frame = image
         
         writer.append_data(frame)
     writer.close()
