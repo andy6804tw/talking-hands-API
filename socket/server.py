@@ -42,5 +42,6 @@ while True:
     frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
     cv2.imshow('ImageWindow',frame)
     cv2.waitKey(1)
-    conn.send(('my response '+str(i)).encode())
+    data = 'response!'
+    conn.send(data.encode())  # send data to the client
     i+=1
