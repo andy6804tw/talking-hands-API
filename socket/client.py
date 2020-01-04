@@ -9,7 +9,7 @@ import zlib
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # client_socket.connect(('0.tcp.ngrok.io', 12698))
-client_socket.connect(('192.168.1.111', 8485))
+client_socket.connect(('127.0.0.1', 8485))
 connection = client_socket.makefile('wb')
 
 cam = cv2.VideoCapture(0)
@@ -37,8 +37,8 @@ while True:
     if img_counter%8==0:
         client_socket.sendall(struct.pack(">L", size) + data)
     img_counter += 1
-    print(img_counter)
-    # response = client_socket.recv(1024).decode()
-    # print("Received response:" + str(response)) 
+    # print(img_counter)
+    response = client_socket.recv(1024).decode()
+    print(response)
 
 cam.release()
