@@ -9,7 +9,7 @@ import numpy as np
 
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# client_socket.connect(('0.tcp.ngrok.io', 12698))
+# client_socket.connect(('0.tcp.ngrok.io', 19082))
 client_socket.connect(('192.168.1.111', 8485))
 connection = client_socket.makefile('wb')
 
@@ -34,10 +34,10 @@ while True:
 
 
     # print("{}: {}".format(img_counter, size))
-    if img_counter%8==0:
+    if img_counter%7==0:
         client_socket.sendall(struct.pack(">L", size) + data)
-        response = client_socket.recv(1024).decode()
-        print(response)
+        # response = client_socket.recv(1024).decode()
+        # print(response)
         # cv2.imshow('ImageWindow',response)
         # cv2.waitKey(1)
         # print(response)
