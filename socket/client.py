@@ -17,12 +17,13 @@ cam = cv2.VideoCapture(0)
 
 # cam.set(3, 128)
 # cam.set(4, 128)
-cam.set(cv2.CAP_PROP_FRAME_WIDTH, 256)
-cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 256)
+# cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280.0)
+# cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720.0)
 
 img_counter = 0
 
 encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+print(encode_param)
 
 while True:
     ret, frame = cam.read()
