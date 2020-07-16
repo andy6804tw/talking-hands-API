@@ -9,7 +9,7 @@ import numpy as np
 
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('0.tcp.ngrok.io', 16636))
+client_socket.connect(('0.tcp.ngrok.io', 14496))
 # client_socket.connect(('192.168.1.111', 8485))
 connection = client_socket.makefile('wb')
 
